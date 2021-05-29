@@ -1,0 +1,107 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-unicornflix-dev-124342-authRole",
+      "UnauthRoleArn": "arn:aws:iam::909708043314:role/amplify-unicornflix-dev-124342-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::909708043314:role/amplify-unicornflix-dev-124342-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-unicornflix-dev-124342-deployment",
+      "UnauthRoleName": "amplify-unicornflix-dev-124342-unauthRole",
+      "StackName": "amplify-unicornflix-dev-124342",
+      "StackId": "arn:aws:cloudformation:us-east-1:909708043314:stack/amplify-unicornflix-dev-124342/80da6980-c07b-11eb-ab44-127e1ad2bd25",
+      "AmplifyAppId": "d1etkh45ue57ps",
+      "AuthTriggerTemplateURL": ""
+    }
+  },
+  "auth": {
+    "unicornflix995756c6": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-124342-deployment/amplify-cfn-templates/auth/unicornflix995756c6-cloudformation-template.yml",
+        "logicalId": "authunicornflix995756c6"
+      },
+      "lastPushTimeStamp": "2021-05-29T13:02:51.629Z",
+      "output": {
+        "UserPoolId": "us-east-1_X9pIz7JDc",
+        "AppClientIDWeb": "bpdvso2o3seo491pho63olv73",
+        "AppClientID": "h0pnvnqk7dih23n287qqv8jg",
+        "IdentityPoolId": "us-east-1:bea51be8-5fbd-4055-b22c-ccb3b84ac343",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:909708043314:userpool/us-east-1_X9pIz7JDc",
+        "IdentityPoolName": "unicornflix995756c6_identitypool_995756c6__dev",
+        "UserPoolName": "unicornflix995756c6_userpool_995756c6"
+      },
+      "lastPushDirHash": "zNSBHbNY15cRYeJxasZLO+HfqdM="
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "unicornflix995756c6",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-124342-deployment/amplify-cfn-templates/auth/template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "lastPushTimeStamp": "2021-05-29T13:02:51.629Z",
+      "output": {
+        "AdminGroupRole": "arn:aws:iam::909708043314:role/us-east-1_X9pIz7JDc-AdminGroupRole"
+      },
+      "lastPushDirHash": "qIpedDCXbJ7Y58KmGvDJTBiymFQ="
+    }
+  },
+  "api": {
+    "GraphQL": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authunicornflix995756c6"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "dr5fd2so5zekfe3qfi4b5gp6iu",
+        "GraphQLAPIEndpointOutput": "https://sv7krnitu5cwjp7csuq7giszi4.appsync-api.us-east-1.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-124342-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiGraphQL"
+      },
+      "lastPushTimeStamp": "2021-05-29T13:02:51.629Z",
+      "lastPushDirHash": "i6YazPbNzjwUyf9PyiX0+R/Lr0A="
+    }
+  },
+  "video": {
+    "unicornflix": {
+      "service": "video",
+      "serviceType": "video-on-demand",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-124342-deployment/amplify-cfn-templates/video/unicornflix-vod-workflow-template.yaml",
+        "logicalId": "videounicornflix"
+      },
+      "lastPushTimeStamp": "2021-05-29T13:02:51.629Z",
+      "output": {
+        "oVodOutputUrl": "unicornflix-dev-output-ll5t6u7e.s3.us-east-1.amazonaws.com",
+        "oVODOutputS3": "unicornflix-dev-output-ll5t6u7e",
+        "oVODInputS3": "unicornflix-dev-input-ll5t6u7e"
+      },
+      "lastPushDirHash": "7UV/ohpikXgpRW3uNFCdYHXYo0Q="
+    }
+  }
+}
